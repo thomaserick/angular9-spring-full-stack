@@ -7,10 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import org.hibernate.validator.constraints.br.CPF;
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.time.LocalDate;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -25,12 +25,15 @@ public class Cliente {
     private Integer id;
 
     @Column(nullable = false,length = 150)
+    @NotEmpty(message = "{campo.name.obrigatorio}")
     private String name;
 
     @Column(nullable = false ,length = 11)
+    @NotNull(message = "{campo.cpf.obrigatorio}")
+    @CPF(message = "{campo.cpf.invalid}")
     private String cpf;
 
-    @Column
+    @Column(updatable = false)
     @JsonFormat( pattern = "dd/MM/yyyy")
     private Date dateCreate;
 

@@ -19,7 +19,7 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente insert(@RequestBody Cliente cliente) {
+    public Cliente insert(@Valid @RequestBody Cliente cliente) {
         return clienteRepository.save(cliente);
     }
 
@@ -42,9 +42,10 @@ public class ClienteController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable(value = "id") Integer id, @RequestBody Cliente clienteUpdate) {
+    public void update(@Valid @PathVariable(value = "id") Integer id, @RequestBody Cliente clienteUpdate) {
         clienteRepository.findById(id).map(cliente -> {
-            clienteUpdate.setId(cliente.getId());
+           cliente.setName(clienteUpdate.getName());
+           cliente.setCpf(clienteUpdate.getCpf());
             return clienteRepository.save(clienteUpdate);
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
