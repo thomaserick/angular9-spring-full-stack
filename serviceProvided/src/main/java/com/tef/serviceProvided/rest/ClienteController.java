@@ -2,6 +2,7 @@ package com.tef.serviceProvided.rest;
 
 import com.tef.serviceProvided.model.entity.Cliente;
 import com.tef.serviceProvided.model.repository.ClienteRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,10 @@ public class ClienteController {
     @Autowired
     private ClienteRepository clienteRepository;
 
+    @GetMapping
+    public List<Cliente> findAll(){
+        return clienteRepository.findAll();
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
