@@ -16,11 +16,13 @@ export class ClientesService {
     );
   }
 
-  getCliente(): Cliente {
-    let cliente: Cliente = new Cliente();
+  findAll(): Cliente[] {
+    let cliente = new Cliente();
+    cliente.id = 1;
     cliente.name = 'Thomas';
-    cliente.cpf = '374.016.988-54';
+    cliente.cpf = '37401698854';
+    cliente.dateCreate = '09/11/1989';
 
-    return cliente;
+    return [cliente];
   }
 }
