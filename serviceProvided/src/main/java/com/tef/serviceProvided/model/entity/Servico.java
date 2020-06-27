@@ -1,5 +1,8 @@
 package com.tef.serviceProvided.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,4 +24,15 @@ public class Servico {
     private Cliente cliente;
 
     private BigDecimal price;
+
+    private LocalDate date;
+
+    @Column(updatable = false)
+    @JsonFormat( pattern = "dd/MM/yyyy")
+    private Date dateCreate;
+
+    @PrePersist
+    public void prePersist(){
+        setDateCreate(new Date());
+    }
 }
