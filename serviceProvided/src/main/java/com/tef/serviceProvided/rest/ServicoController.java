@@ -8,6 +8,7 @@ import com.tef.serviceProvided.rest.dto.ServicoDTO;
 import com.tef.serviceProvided.util.BigDecimalConverter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,14 @@ public class ServicoController
 
 		return servicoRepository.save(servico);
 
+	}
+
+	@GetMapping
+	public List<Servico> search(
+		@RequestParam(value="name",required = false, defaultValue = "") String name,
+		@RequestParam(value="mes",required = false) Integer mes)
+	{
+
+	return servicoRepository.findByNameClientMes("%"+ name +"%",mes);
 	}
 }

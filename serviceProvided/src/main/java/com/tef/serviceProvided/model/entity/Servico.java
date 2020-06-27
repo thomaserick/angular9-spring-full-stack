@@ -25,6 +25,7 @@ public class Servico {
 
     private BigDecimal price;
 
+    @JsonFormat( pattern = "dd/MM/yyyy")
     private LocalDate date;
 
     @Column(updatable = false)
