@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicePrestededSearch } from './servicePrestededSearch';
 
 @Component({
   selector: 'app-service-presteded-list',
@@ -9,6 +10,7 @@ export class ServicePrestededListComponent implements OnInit {
   name: String;
   mes: Number;
   meses: Number[];
+  list: ServicePrestededSearch[];
 
   constructor() {
     this.meses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
