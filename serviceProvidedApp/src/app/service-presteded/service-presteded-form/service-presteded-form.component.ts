@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Cliente } from 'src/app/clientes/cliente';
+import { ClientesService } from '../../clientes.service';
+import { ServicePrested } from '../service-presteded';
 
 @Component({
   selector: 'app-service-presteded-form',
@@ -6,7 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./service-presteded-form.component.css'],
 })
 export class ServicePrestededFormComponent implements OnInit {
-  constructor() {}
+  clientes: Cliente[] = [];
+  service: ServicePrested;
 
-  ngOnInit(): void {}
+  constructor(private ClienteService: ClientesService) {
+    this.service = new ServicePrested();
+  }
+
+  ngOnInit(): void {
+    this.ClienteService.findAll().subscribe(
+      (response) => {
+        this.clientes = response;
+      },
+      (error) => {}
+    );
+  }
+
+  onSubmit() {
+    console.log(this.service);
+  }
 }

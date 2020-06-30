@@ -1,1 +1,60 @@
-<p>servico-presteded-form works!</p>
+<h1 class="mt-4">
+    Serviço Prestado
+</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-bitem active">Novo</li>
+</ol>
+<div class="container">
+    <form #form="ngForm" (submit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Cliente:</label>
+                    <select class="form-control" [ngModelOptions]="{standalone:true}" [(ngModel)]="service.idCliente">
+                        <option value="">Selecione....</option>
+                        <option *ngFor=" let cliente of clientes" [ngValue]="cliente.id">
+                            {{cliente.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Descrição:</label>
+                    <input class="form-control" [(ngModel)]="service.descricao" type="text" name="descricao"
+                        id="descricao">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Data:</label>
+                    <input class="form-control" [(ngModel)]="service.data" type="date" name="data" id="data">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Preço</label>
+                    <input type="text" [(ngModel)]="service.preco" name="preco" id="preco" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-success" type="submit">Cadastrar
+                    <i class="fa fa-save"></i>
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
