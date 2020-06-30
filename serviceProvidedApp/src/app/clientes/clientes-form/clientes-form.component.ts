@@ -13,8 +13,8 @@ export class ClientesFormComponent implements OnInit {
   cliente: Cliente;
   success: boolean = false;
   errors: String[];
-  id: Number;
   msg: String;
+  id: Number;
 
   constructor(
     private service: ClientesService,

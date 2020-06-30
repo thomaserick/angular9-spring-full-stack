@@ -12,6 +12,9 @@ import { ServicePrestededService } from '../../service-presteded.service';
 export class ServicePrestededFormComponent implements OnInit {
   clientes: Cliente[] = [];
   service: ServicePrested;
+  success: boolean = false;
+  errors: String[];
+  msg: String;
 
   constructor(
     private ClienteService: ClientesService,
@@ -31,8 +34,17 @@ export class ServicePrestededFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.service);
-    this.servicePrestededService.insert(this.service).subscribe((response) => {
-      console.log(response);
-    });
+    this.servicePrestededService.insert(this.service).subscribe(
+      (response) => {
+        this.success = true;
+        this.msg = 'Serviço Prestado cadastrado com sucesso!';
+        this.errors = null;
+        this.service = new ServicePrested();
+      },
+      (errors) => {
+        this.success = false;
+        this.errors = errors.error.errors;
+      }
+    );
   }
 }
