@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class ServicoController
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Servico insert(@RequestBody ServicoDTO servicoDTO){
+	public Servico insert(@RequestBody @Valid  ServicoDTO servicoDTO){
 		LocalDate date = LocalDate.parse(servicoDTO.getData(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		Integer idCliente = servicoDTO.getIdCliente();
 		//Pode existir ou não
