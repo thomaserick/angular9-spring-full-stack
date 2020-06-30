@@ -18,7 +18,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
-@RequestMapping("api/servicos")
+@RequestMapping("api/services")
+@CrossOrigin("http://localhost:4200")
 @RequiredArgsConstructor
 public class ServicoController
 {
@@ -30,7 +31,7 @@ public class ServicoController
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Servico insert(@RequestBody ServicoDTO servicoDTO){
-		LocalDate date = LocalDate.parse(servicoDTO.getData(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		LocalDate date = LocalDate.parse(servicoDTO.getData(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		Integer idCliente = servicoDTO.getIdCliente();
 		//Pode existir ou não
 		Cliente cliente = clienteRepository
