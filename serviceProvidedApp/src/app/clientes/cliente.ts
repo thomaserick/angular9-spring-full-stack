@@ -1,6 +1,6 @@
 export class Cliente {
   id: number;
-  name: String;
+  name: string;
   cpf: string;
   dateCreate: string;
 }

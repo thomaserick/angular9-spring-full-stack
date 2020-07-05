@@ -21,11 +21,45 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-3">
-                <button class="btn btn-info">
-                    <i class="fa fa-search"></i>Consultar
+            <div class="form-group col-md-6">
+                <button class="btn btn-info  mr-2">
+                    <i class="fa fa-search"></i> Consultar
+                </button>
+
+                <button typ="button" routerLink="/service-presteded-form" class="btn btn-primary">
+                    <i class="fa fa-plus"></i> Novo
                 </button>
             </div>
         </div>
     </form>
+
+    <div class="row">
+        <div class="alert alert-warning" role="alert" *ngIf="message">
+            {{ message }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <th>Cliente</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let service of list">
+                        <td>{{ service.cliente.name }}</td>
+                        <td>{{ service.descricao }}</td>
+                        <td>{{ service.price }}</td>
+                        <td>{{ service.date }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+    </div>
 </div>

@@ -41,11 +41,12 @@
                         <td>{{ cliente.cpf }}</td>
                         <td>{{cliente.dateCreate}} </td>
                         <td class="table-actions">
-                            <button type="button" class="btn btn-warning" routerLink="/clientes-form/{{cliente.id}}">
-                                <i class="fa fa-edit"> </i>
+                            <button type="button" class="btn btn-warning mr-1" title="Editar"
+                                routerLink="/clientes-form/{{cliente.id}}">
+                                <i class="fa fa-edit aling-center"> </i>
                             </button>
-                            <button type="button" class="btn btn-danger" (click)="deletePreview(cliente)"
-                                data-toggle="modal" data-target="#modalDelet">
+                            <button type="button" class="btn btn-danger" title="Excluir"
+                                (click)="deletePreview(cliente)" data-toggle="modal" data-target="#modalDelet">
                                 <i class="fa fa-trash"> </i>
                             </button>
                         </td>

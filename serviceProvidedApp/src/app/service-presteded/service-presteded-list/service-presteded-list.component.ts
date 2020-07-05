@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicePrestededSearch } from './servicePrestededSearch';
+import { ServicePrestededService } from '../../service-presteded.service';
 
 @Component({
   selector: 'app-service-presteded-list',
@@ -7,18 +8,31 @@ import { ServicePrestededSearch } from './servicePrestededSearch';
   styleUrls: ['./service-presteded-list.component.css'],
 })
 export class ServicePrestededListComponent implements OnInit {
-  name: String;
-  mes: Number;
-  meses: Number[];
+  name: string;
+  mes: number;
+  meses: number[];
   list: ServicePrestededSearch[];
+  message: string;
 
-  constructor() {
+  constructor(private servicePrestededService: ServicePrestededService) {
     this.meses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   search() {
-    console.log(this.name, this.mes);
+    this.servicePrestededService.search(this.name, this.mes).subscribe(
+      (response) => {
+        this.list = response;
+        if (this.list.length <= 0) {
+          this.message = "Nenhum Registro encontrado."
+        } else {
+          this.message = null;
+        }
+      },
+      (error) => {
+        this.list = [];
+      }
+    );
   }
 }

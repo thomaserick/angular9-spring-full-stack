@@ -1,6 +1,6 @@
 export class ServicePrested {
-  descricao: String;
-  preco: String;
-  data: String;
-  idCliente: Number;
+  descricao: string;
+  preco: string;
+  data: string;
+  idCliente: number;
 }
