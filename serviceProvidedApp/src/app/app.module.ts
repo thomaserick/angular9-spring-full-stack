@@ -12,9 +12,10 @@ import { ClientesService } from './clientes.service';
 import { ServicePrestededService } from './service-presteded.service';
 import { ServicePrestededModule } from './service-presteded/service-presteded.module';
 import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, LayoutComponent],
   imports: [
     BrowserModule,
     FormsModule,
