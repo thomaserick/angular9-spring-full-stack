@@ -1,82 +1,113 @@
 <h1 class="mt-4">Clientes</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Consulta</li>
+  <li class="breadcrumb-item active">Consulta</li>
 </ol>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-success" role="alert" *ngIf="msgSuccess">
-                {{msgSuccess}}
-            </div>
-            <div class="alert alert-danger" role="alert" *ngIf="msgError">
-                {{msgError}}
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success" role="alert" *ngIf="msgSuccess">
+        {{ msgSuccess }}
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="msgError">
+        {{ msgError }}
+      </div>
     </div>
-    <div class="row">
-        <div class="col-md-2">
-            <button class="btn btn-primary" (click)="insert()">
-                <i class="fa fa-plus"></i>
-                Novo
-            </button>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <button class="btn btn-primary" (click)="insert()">
+        <i class="fa fa-plus"></i>
+        Novo
+      </button>
     </div>
-    <br />
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-condensed table-hover">
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Data Cadastro</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let cliente of clientes">
-                        <td>{{ cliente.id }}</td>
-                        <td>{{ cliente.name }}</td>
-                        <td>{{ cliente.cpf }}</td>
-                        <td>{{cliente.dateCreate}} </td>
-                        <td class="table-actions">
-                            <button type="button" class="btn btn-warning mr-1" title="Editar"
-                                routerLink="/clientes-form/{{cliente.id}}">
-                                <i class="fa fa-edit aling-center"> </i>
-                            </button>
-                            <button type="button" class="btn btn-danger" title="Excluir"
-                                (click)="deletePreview(cliente)" data-toggle="modal" data-target="#modalDelet">
-                                <i class="fa fa-trash"> </i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Data Cadastro</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.name }}</td>
+            <td>{{ cliente.cpf }}</td>
+            <td>{{ cliente.dateCreate }}</td>
+            <td class="table-actions">
+              <button
+                type="button"
+                class="btn btn-warning mr-1"
+                title="Editar"
+                routerLink="/clientes/form/{{ cliente.id }}"
+              >
+                <i class="fa fa-edit aling-center"> </i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                title="Excluir"
+                (click)="deletePreview(cliente)"
+                data-toggle="modal"
+                data-target="#modalDelet"
+              >
+                <i class="fa fa-trash"> </i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="modalDelet" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title">Excluir Cliente</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" *ngIf="clienteDelete">
-                    Tem certeza de que deseja excluir o cliente
-                    <b>
-                        {{clienteDelete.name}}?
-                    </b>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" (click)="delete(clienteDelete.id)"
-                        data-dismiss="modal">Confirmar</button>
-                    <button type="button" class="btn btn-danger text-white" data-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
+  </div>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="modalDelet"
+    tabindex="-1"
+    role="dialog"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title">Excluir Cliente</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body" *ngIf="clienteDelete">
+          Tem certeza de que deseja excluir o cliente
+          <b> {{ clienteDelete.name }}? </b>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="delete(clienteDelete.id)"
+            data-dismiss="modal"
+          >
+            Confirmar
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger text-white"
+            data-dismiss="modal"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

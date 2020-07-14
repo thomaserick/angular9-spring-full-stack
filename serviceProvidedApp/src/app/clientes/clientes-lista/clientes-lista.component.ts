@@ -26,7 +26,7 @@ export class ClientesListaComponent implements OnInit {
   }
 
   insert() {
-    this.router.navigate(['/clientes-form']);
+    this.router.navigate(['/clientes/form']);
   }
 
   deletePreview(cliente: Cliente) {

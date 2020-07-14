@@ -1,76 +1,103 @@
 <h1 class="mt-4">
-    Serviço Prestado
+  Serviço Prestado
 </h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-bitem active">Novo</li>
+  <li class="breadcrumb-bitem active">Novo</li>
 </ol>
 <div class="container">
-    <form #form="ngForm" (submit)="onSubmit()">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-success" role="alert" *ngIf="success == true">
-                    {{msg}}
-                </div>
-                <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
-                    {{error}}
-                </div>
-            </div>
+  <form #form="ngForm" (submit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="success == true">
+          {{ msg }}
         </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Cliente:</label>
-                    <select class="form-control" [ngModelOptions]="{standalone:true}" [(ngModel)]="service.idCliente">
-                        <option value="">Selecione....</option>
-                        <option *ngFor=" let cliente of clientes" [ngValue]="cliente.id">
-                            {{cliente.name}}
-                        </option>
-                    </select>
-                </div>
-            </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngFor="let error of errors"
+        >
+          {{ error }}
         </div>
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Descrição:</label>
-                    <input class="form-control" [(ngModel)]="service.descricao" type="text" name="descricao"
-                        id="descricao">
-                </div>
-            </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Cliente:</label>
+          <select
+            class="form-control"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="service.idCliente"
+          >
+            <option value="">Selecione....</option>
+            <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
+              {{ cliente.name }}
+            </option>
+          </select>
         </div>
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="">Data:</label>
-                    <input class="form-control" [(ngModel)]="service.data" type="date" name="data" id="data">
-                </div>
-            </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Descrição:</label>
+          <input
+            class="form-control"
+            [(ngModel)]="service.descricao"
+            type="text"
+            name="descricao"
+            id="descricao"
+          />
         </div>
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="">Preço</label>
-                    <input type="text" [(ngModel)]="service.preco" name="preco" id="preco" class="form-control">
-                </div>
-            </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Data:</label>
+          <input
+            class="form-control"
+            [(ngModel)]="service.data"
+            type="date"
+            name="data"
+            id="data"
+          />
         </div>
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                <button class="btn btn-success" type="submit">
-                    <i class="fa fa-save"></i> Cadastrar
-                </button>
-                <button type="button" routerLink="/service-presteded-list" class="btn btn-danger ml-2">
-                    <i class="fa fa-arrow-alt-circle-left">
-                    </i>
-                    Cancelar
-                </button>
-            </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Preço</label>
+          <input
+            type="text"
+            [(ngModel)]="service.preco"
+            name="preco"
+            id="preco"
+            class="form-control"
+          />
         </div>
+      </div>
+    </div>
 
-    </form>
+    <div class="row">
+      <div class="col-md-6">
+        <button class="btn btn-success" type="submit">
+          <i class="fa fa-save"></i> Cadastrar
+        </button>
+        <button
+          type="button"
+          routerLink="/service-presteded/list"
+          class="btn btn-danger ml-2"
+        >
+          <i class="fa fa-arrow-alt-circle-left"> </i>
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
