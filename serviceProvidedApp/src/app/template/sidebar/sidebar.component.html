@@ -12,7 +12,7 @@
         <div class="sb-sidenav-menu-heading">Cadastros</div>
         <a
           class="nav-link collapsed"
-          routerLink="/clientes"
+          routerLink="/clientes/lista"
           data-toggle="collapse"
           data-target="#collapseLayouts"
           aria-expanded="false"
@@ -26,7 +26,7 @@
 
         <a
           class="nav-link collapsed"
-          routerLink="/service-presteded"
+          routerLink="/service-presteded/list"
           data-toggle="collapse"
           data-target="#collapseLayouts"
           aria-expanded="false"
@@ -36,6 +36,21 @@
             <i class="fas fa-clipboard-list"></i>
           </div>
           Serviços Prestados
+        </a>
+        <div class="sb-sidenav-menu-heading">Logout</div>
+        <a
+          class="nav-link collapsed"
+          (click)="logout()"
+          href="#"
+          data-toggle="collapse"
+          data-target="#collapseLayouts"
+          aria-expanded="false"
+          aria-controls="collapseLayouts"
+        >
+          <div class="sb-nav-link-icon">
+            <i class="fas fa-sign-out-alt"></i>
+          </div>
+          Sair
         </a>
       </div>
     </div>

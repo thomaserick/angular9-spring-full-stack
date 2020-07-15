@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StorageService } from '../services/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -18,7 +19,9 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     const tokenJWT = this.storageService.getAcessToken();
 
-    if (tokenJWT) {
+    const url = request.url;
+
+    if (tokenJWT && !url.endsWith(environment.tokenUrlAuth)) {
       request = request.clone({
         setHeaders: {
           Authorization: 'Bearer ' + tokenJWT,
