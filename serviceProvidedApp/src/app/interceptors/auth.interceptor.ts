@@ -17,12 +17,14 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const tokenJWT = this.storageService.getAcessToken();
-    console.log(tokenJWT);
-    request = request.clone({
-      setHeaders: {
-        Authorization: 'Bearer ' + tokenJWT,
-      },
-    });
+
+    if (tokenJWT) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: 'Bearer ' + tokenJWT,
+        },
+      });
+    }
 
     return next.handle(request);
   }

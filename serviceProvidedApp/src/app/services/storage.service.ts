@@ -9,7 +9,7 @@ export class StorageService {
 
   constructor() {}
 
-  getAcessToken(): String {
+  getAcessToken() {
     let token = localStorage.getItem(this.access_token);
     if (token == null) {
       return null;

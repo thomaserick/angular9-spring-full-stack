@@ -61,7 +61,7 @@ export class LoginComponent {
       },
       (errors) => {
         this.errors = errors.error.errors;
-        console.log(errors.error);
+        console.log(errors);
         this.msgSuccess = null;
         this.clearUser();
       }

@@ -22,6 +22,10 @@ Full Stack (Angular 9 + Spring Boot 2)
   - Cria os componentes
 - ng generate model (ng g c (nome))
   - Cria os modulos
+- ng g service
+  - Cria um servico
+- ng g guard
+  -Cria o guard para as rotas
 
 ### Adendo
 
